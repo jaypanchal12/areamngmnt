@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="H3j-gn-JXe" userLabel="Filter Header View" customClass="filterHeaderView">
+            <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hRM-An-bzS">
+                    <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <view alpha="0.050000000000000003" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Eq-xR-sTf">
+                    <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
+                    <color key="backgroundColor" red="0.396078431372549" green="0.1764705882352941" blue="0.56470588235294117" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bCO-Sx-Kak">
+                    <rect key="frame" x="0.0" y="0.5" width="300" height="300"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
+                    <color key="textColor" red="0.39478373529999999" green="0.17510411140000001" blue="0.63529411764705879" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="1Eq-xR-sTf" firstAttribute="centerX" secondItem="H3j-gn-JXe" secondAttribute="centerX" id="1tq-j3-LMI"/>
+                <constraint firstAttribute="bottom" secondItem="hRM-An-bzS" secondAttribute="bottom" id="801-MH-0we"/>
+                <constraint firstItem="bCO-Sx-Kak" firstAttribute="centerX" secondItem="H3j-gn-JXe" secondAttribute="centerX" id="9qx-XE-TYL"/>
+                <constraint firstItem="1Eq-xR-sTf" firstAttribute="height" secondItem="hRM-An-bzS" secondAttribute="height" id="CMX-Gq-SpB"/>
+                <constraint firstItem="hRM-An-bzS" firstAttribute="leading" secondItem="H3j-gn-JXe" secondAttribute="leading" id="EL3-OT-j5d"/>
+                <constraint firstItem="bCO-Sx-Kak" firstAttribute="centerY" secondItem="H3j-gn-JXe" secondAttribute="centerY" id="Lh9-BK-E2y"/>
+                <constraint firstItem="1Eq-xR-sTf" firstAttribute="centerY" secondItem="H3j-gn-JXe" secondAttribute="centerY" id="ROF-LO-Rs9"/>
+                <constraint firstAttribute="trailing" secondItem="hRM-An-bzS" secondAttribute="trailing" id="d1p-VH-h0g"/>
+                <constraint firstItem="1Eq-xR-sTf" firstAttribute="width" secondItem="hRM-An-bzS" secondAttribute="width" id="di6-4t-bG2"/>
+                <constraint firstItem="bCO-Sx-Kak" firstAttribute="height" secondItem="1Eq-xR-sTf" secondAttribute="height" id="hhb-Sk-6tn"/>
+                <constraint firstItem="bCO-Sx-Kak" firstAttribute="width" secondItem="1Eq-xR-sTf" secondAttribute="width" id="kw6-GK-OrN"/>
+                <constraint firstItem="hRM-An-bzS" firstAttribute="top" secondItem="H3j-gn-JXe" secondAttribute="top" id="qPN-yR-oOw"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="headerLabel" destination="bCO-Sx-Kak" id="Npf-0a-5lI"/>
+            </connections>
+            <point key="canvasLocation" x="102" y="40"/>
+        </view>
+    </objects>
+</document>
