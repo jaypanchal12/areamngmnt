@@ -8,9 +8,9 @@ target 'firDemo' do
   # Pods for firDemo
 
 pod 'SSDataSources'
-pod 'FirebaseInstanceID', '~> 2.0'
-pod 'FirebaseMessaging', '~> 2.0'
-pod 'Firebase', '~> 4.0’
+pod 'FirebaseInstanceID'
+pod 'FirebaseMessaging'
+pod 'Firebase'
 pod 'Crashlytics', '~> 3.8'
 pod 'Mantle'
 pod 'Firebase/Database'
