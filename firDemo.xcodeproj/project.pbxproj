@@ -97,6 +97,45 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		703406E81F36FF6E00A9FB45 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E8A106A31F31A864004D2DC1 /* areasViewController.h */,
+				E8A106A41F31A864004D2DC1 /* areasViewController.m */,
+				E8A106B61F31E771004D2DC1 /* showMapViewController.h */,
+				E8A106B71F31E771004D2DC1 /* showMapViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		703406E91F36FF7B00A9FB45 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E8A106A61F31B407004D2DC1 /* filterHeaderView.h */,
+				E8A106A71F31B407004D2DC1 /* filterHeaderView.m */,
+				E8A106A91F31B468004D2DC1 /* View.xib */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		703406EA1F36FF8200A9FB45 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E8A106AB1F31B81C004D2DC1 /* countryCitiesAreaList.h */,
+				E8A106AC1F31B81C004D2DC1 /* countryCitiesAreaList.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		703406EB1F36FF8E00A9FB45 /* Managers-Classes */ = {
+			isa = PBXGroup;
+			children = (
+				E8A106AE1F31C1F4004D2DC1 /* filterDelegates.h */,
+				E8A106AF1F31C1F4004D2DC1 /* filterDelegates.m */,
+			);
+			name = "Managers-Classes";
+			sourceTree = "<group>";
+		};
 		8FEC3EDD03DDC9E68893A881 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -140,19 +179,12 @@
 			isa = PBXGroup;
 			children = (
 				E8A106B11F31C756004D2DC1 /* GoogleService-Info.plist */,
-				E8A106A31F31A864004D2DC1 /* areasViewController.h */,
-				E8A106A41F31A864004D2DC1 /* areasViewController.m */,
-				E8A106B61F31E771004D2DC1 /* showMapViewController.h */,
-				E8A106B71F31E771004D2DC1 /* showMapViewController.m */,
-				E8A106AE1F31C1F4004D2DC1 /* filterDelegates.h */,
-				E8A106AF1F31C1F4004D2DC1 /* filterDelegates.m */,
-				E8A106A61F31B407004D2DC1 /* filterHeaderView.h */,
-				E8A106A71F31B407004D2DC1 /* filterHeaderView.m */,
-				E8A106A91F31B468004D2DC1 /* View.xib */,
-				E8A106AB1F31B81C004D2DC1 /* countryCitiesAreaList.h */,
-				E8A106AC1F31B81C004D2DC1 /* countryCitiesAreaList.m */,
 				E8A1068C1F319ED8004D2DC1 /* AppDelegate.h */,
 				E8A1068D1F319ED8004D2DC1 /* AppDelegate.m */,
+				703406E81F36FF6E00A9FB45 /* Controllers */,
+				703406EB1F36FF8E00A9FB45 /* Managers-Classes */,
+				703406E91F36FF7B00A9FB45 /* View */,
+				703406EA1F36FF8200A9FB45 /* Models */,
 				E8A106921F319ED8004D2DC1 /* Main.storyboard */,
 				E8A106951F319ED8004D2DC1 /* Assets.xcassets */,
 				E8A106971F319ED8004D2DC1 /* LaunchScreen.storyboard */,
@@ -278,7 +310,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		FB56DB026BB5923950A2B43F /* [CP] Embed Pods Frameworks */ = {
