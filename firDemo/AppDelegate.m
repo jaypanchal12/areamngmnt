@@ -16,7 +16,8 @@
 
 @implementation AppDelegate
 
-
+//this is nothing than make a change
+// as a general rule...plz user upper case character for starting a class name ;)
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     [FIRApp configure];
