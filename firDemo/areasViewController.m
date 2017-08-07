@@ -256,6 +256,7 @@
 }
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar __TVOS_PROHIBITED{
     [self.areaSearchBar resignFirstResponder];
+    
     [self close:nil];
 }
 - (void)searchBarResultsListButtonClicked:(UISearchBar *)searchBar{

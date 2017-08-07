@@ -12,7 +12,7 @@
 
 @interface showMapViewController : UIViewController
 
-@property (nonatomic, strong) NSArray *Citylist;
+@property (nonatomic, strong) NSMutableArray *Citylist;
 @property (nonatomic, strong) NSArray *polygonList;
 
 @property (weak, nonatomic) IBOutlet UILabel *areaLabel;
@@ -23,6 +23,7 @@
 @property (strong, nonatomic)GMSMarker *addressMarker;
 @property (strong, nonatomic)GMSCameraPosition *camera;
 @property (nonatomic, strong) GMSPolygon *polygon;
+@property (nonatomic, strong) GMSPolygon *drawPolygon;
 
 @property(nonatomic)CLLocationCoordinate2D *locationManager;
 

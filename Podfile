@@ -17,6 +17,8 @@ pod 'Firebase/Database'
 pod 'GoogleMaps'
 pod 'GooglePlaces'
 pod 'LMGeocoder'
+pod 'SCLAlertView-Objective-C'
+
 
 
 

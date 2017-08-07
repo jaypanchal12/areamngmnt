@@ -15,7 +15,7 @@
 @property (nonatomic, strong) SSSectionedDataSource *elementDataSource;
 
 
-@property (nonatomic, strong) NSArray *list;
+@property (nonatomic, strong) NSMutableArray *list;
 @property (nonatomic, strong) NSArray *filteredList;
 
 

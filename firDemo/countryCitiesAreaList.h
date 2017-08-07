@@ -13,7 +13,7 @@
 @interface CountryCitiesListResponse :  MTLModel <MTLJSONSerializing>
 @property(nonatomic, copy,readonly) NSString *returnCode;
 @property(nonatomic, copy,readonly) NSString *MessageText;
-@property(nonatomic, copy,readonly) NSArray *cityInfo;
+@property(nonatomic, copy,readonly) NSMutableArray *cityInfo;
 @end
 
 
