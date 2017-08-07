@@ -97,7 +97,7 @@ BOOL mouseSwiped;
     
 }
 
--(void)didApplyFilter:(NSString*)filterVal andID:(NSString*)ID andPolygon:(NSArray*)polygon andObject:(id)object;
+-(void)didApplyFilter:(NSString*)filterVal andID:(City*)ID andPolygon:(NSArray*)polygon andObject:(id)object;
 {
     if (!object) {
         return;

@@ -165,9 +165,10 @@
         filter=((Area*)requiredSec.items[indexPath.row]).areaName;
         poly=((Area*)requiredSec.items[indexPath.row]).polygons;
 
-        City*city=(City*)self.list[indexPath.section];
-    [obj applyFilter:filter andID:city.cityName andPolygon:poly andObject:requiredSec.items[indexPath.row]];
-    
+        City*city=(City*)self.list;
+  //  [obj applyFilter:filter andID:city.cityName andPolygon:poly andObject:requiredSec.items[indexPath.row]];
+    [obj applyFilter:filter andID:city andPolygon:poly andObject:requiredSec.items[indexPath.row]];
+
     
     [self dismiss:nil];
 }
@@ -180,7 +181,7 @@
 
 -(void)applyFilter{
     filterDelegates*obj=[filterDelegates sharedInstance];
-    [obj applyFilter:@"" andID:@"" andPolygon:nil andObject:nil];
+    [obj applyFilter:@"" andID:nil andPolygon:nil andObject:nil];
 }
 
 
