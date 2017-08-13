@@ -13,6 +13,10 @@
 @interface showMapViewController : UIViewController
 
 @property (nonatomic, strong) NSMutableArray *Citylist;
+@property (nonatomic, strong) NSMutableArray *cityNameArray;
+@property (nonatomic, strong) NSMutableArray *cityIDArray;
+
+
 @property (nonatomic, strong) NSArray *polygonList;
 
 @property (weak, nonatomic) IBOutlet UILabel *areaLabel;
@@ -26,6 +30,9 @@
 @property (nonatomic, strong) GMSPolygon *drawPolygon;
 
 @property(nonatomic)CLLocationCoordinate2D *locationManager;
+@property (weak, nonatomic) IBOutlet UIButton *drawMapBtn_Outlet;
+@property (weak, nonatomic) IBOutlet UIButton *saveAreaBtn_Outlet;
+@property (weak, nonatomic) IBOutlet UIButton *updateBtn_outlet;
 
 
 

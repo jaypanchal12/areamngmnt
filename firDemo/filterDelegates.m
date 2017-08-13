@@ -20,8 +20,12 @@
     });
     return _sharedObject;
 }
--(void)applyFilter:(NSString*)filterVal andID:(City*)ID  andPolygon:(NSArray *)polygon andObject:(id)object{
+-(void)applyFilter:(NSString*)filterVal andID:(NSString*)ID  andPolygon:(NSArray *)polygon andObject:(id)object{
     [self.delegate didApplyFilter:filterVal andID:ID andPolygon:polygon andObject:object];
+}
+
+-(void)applyFilterCityName:(City*)cityobject {
+    [self.delegate didApplyFilterCityName:cityobject];
 }
 
 

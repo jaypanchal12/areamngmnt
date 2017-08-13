@@ -43,8 +43,8 @@
 @end
 
 @interface City :  MTLModel <MTLJSONSerializing>
-@property(nonatomic, copy,readonly) NSString *cityID;
-@property(nonatomic, copy,readonly) NSString *cityName;
+@property(nonatomic, copy) NSString *cityID;
+@property(nonatomic, copy) NSString *cityName;
 @property(nonatomic, copy) NSArray<Area*> *areaInfo;
 @end
 

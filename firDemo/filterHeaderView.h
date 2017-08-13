@@ -12,6 +12,7 @@
 
 @interface filterHeaderView : SSBaseHeaderFooterView
 @property (weak, nonatomic) IBOutlet UILabel *headerLabel;
+@property (weak, nonatomic) IBOutlet UIButton *addCityBtn;
 
 
 @end

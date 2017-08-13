@@ -20,7 +20,9 @@
 @property (nonatomic, strong) NSMutableDictionary *latlongDict;
 @property (nonatomic, strong) NSMutableDictionary *coordinateDict;
 @property (nonatomic, strong) NSMutableDictionary *coordinateDict1;
-@property (nonatomic, strong) countryCitiesAreasList *ccAreaList;
+@property (nonatomic, strong) CountryCitiesListResponse *ccAreaList;
+@property (nonatomic, strong) City *cityObj;
+
 @end
 
 UIImageView *drawImage;
@@ -35,7 +37,7 @@ BOOL mouseSwiped;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.ccAreaList=[[countryCitiesAreasList alloc]init];
+    self.ccAreaList=[[CountryCitiesListResponse alloc]init];
    // latLang=[[NSMutableArray alloc]init];
     self.filterDel=[filterDelegates sharedInstance];
     self.filterDel.delegate=self;
@@ -97,7 +99,7 @@ BOOL mouseSwiped;
     
 }
 
--(void)didApplyFilter:(NSString*)filterVal andID:(City*)ID andPolygon:(NSArray*)polygon andObject:(id)object;
+-(void)didApplyFilter:(NSString*)filterVal andID:(NSString*)ID andPolygon:(NSArray*)polygon andObject:(id)object
 {
     if (!object) {
         return;
@@ -107,6 +109,12 @@ BOOL mouseSwiped;
 
     self.areaLabel.text=[filterVal capitalizedString];
         
+        self.drawMapBtn_Outlet.hidden=true;
+        self.saveAreaBtn_Outlet.hidden=true;
+        
+//        NSMutableArray *cityArray=[[NSMutableArray alloc]init];
+//        [cityArray addObject:ID];
+//        
         self.polygonList=polygon;
         [self drawAreaBorders];
         [self getCityName];
@@ -114,6 +122,39 @@ BOOL mouseSwiped;
 
     });
    }
+
+-(void)didApplyFilterCityName:(City *)cityObject {
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.cityObj=cityObject;
+        
+        self.saveAreaBtn_Outlet.hidden=false;
+        self.drawMapBtn_Outlet.hidden=false;
+        
+
+    self.areaLabel.text=@"Add New Area";
+    });
+    
+}
+
+//-(void)didApplyFilterCityName:(NSString *)cityName andCityID:(NSString *)ID
+//{
+//    
+////    self.cityObj.cityName=cityName;
+////    self.cityObj.cityID=ID;
+////    self.cityObj.areaInfo=nil;
+//    dispatch_async(dispatch_get_main_queue(), ^{
+//    self.areaLabel.text=@"Add New Area";
+//});
+//
+//
+//    self.nCityName=cityName;
+//}
+
+
+
+
+
 
 -(void)getCityName{
     NSString *cityDetail=[NSString stringWithFormat:@"%@,Kuwait",self.areaLabel.text];
@@ -156,13 +197,19 @@ BOOL mouseSwiped;
                      NSLog(@"%@",snapshot.value);
                      return ;
                  }
-               //  NSLog(@"%@",snapshot.value);
                  NSError *error=nil;
                  
-                 CountryCitiesListResponse *CCLR=[[CountryCitiesListResponse alloc]init];
                  
-                 CCLR= [MTLJSONAdapter modelOfClass:CountryCitiesListResponse.class  fromJSONDictionary:snapshot.value error:&error];
-                 self.Citylist=CCLR.cityInfo;
+                 self.ccAreaList= [MTLJSONAdapter modelOfClass:CountryCitiesListResponse.class  fromJSONDictionary:snapshot.value error:&error];
+                 self.Citylist=self.ccAreaList.cityInfo;
+                 self.cityNameArray=[[NSMutableArray alloc]init];
+                 self.cityIDArray=[[NSMutableArray alloc]init];
+
+
+                 for (City *c in self.ccAreaList.cityInfo) {
+                     [self.cityNameArray addObject:c.cityName];
+                     
+                 }                 
                  if ([self.areaLabel.text isEqualToString:@""]) {
                      [self selectArea:nil];
                  }
@@ -294,9 +341,208 @@ BOOL mouseSwiped;
 
 
 
+//-(IBAction)saveMap:(id)sender {
+//    
+//    [drawImage removeFromSuperview];
+//     self.drawPolygon.map = nil;
+//
+//    self.mapView.userInteractionEnabled=YES;
+//    GMSMutablePath*pathDynamic = [[GMSMutablePath alloc] init];
+//    self.latlongArray=[[NSMutableArray alloc]init];
+//    for(int idx = 0; idx < [latLang count]; idx++) {
+//        CLLocation* locationCL = [latLang objectAtIndex:idx];
+//        [pathDynamic addCoordinate:locationCL.coordinate];//Add your location in mutable path
+//        NSString *latitude = [[NSString alloc] initWithFormat:@"%f", locationCL.coordinate.latitude];
+//        NSString *longitude = [[NSString alloc] initWithFormat:@"%f", locationCL.coordinate.longitude];
+//        self.latlongDict=[[NSMutableDictionary alloc]init];
+//        self.coordinateDict=[[NSMutableDictionary alloc]init];
+//        self.coordinateDict1=[[NSMutableDictionary alloc]init];
+//
+//        [self.latlongDict setValue:latitude forKey:@"lat"];
+//        [self.latlongDict setValue:longitude forKey:@"lng"];
+//        
+//        [self.coordinateDict setValue:self.latlongDict forKey:@"coordinate"];
+//        [self.coordinateDict1 setValue:self.coordinateDict forKey:@"coordinate1"];
+//        
+//
+//        
+//        [self.latlongArray addObject:self.coordinateDict1];
+//    }
+//    
+//    self.drawPolygon = [GMSPolygon polygonWithPath:pathDynamic];
+//    // Add the polyline to the map.
+//    self.drawPolygon.strokeColor =[UIColor purpleColor ];
+//    self.drawPolygon.strokeWidth = 2.0f;
+//    self.drawPolygon.map = self.mapView;
+//    self.drawPolygon.fillColor=[UIColor colorWithRed:101.0f/255.0f green:45.0f/255.0f blue:144.0f/255.0f alpha:0.2f];
+//    
+//    
+//    SCLAlertView *alert = [[SCLAlertView alloc] init];
+//    
+//    UITextField *textField = [alert addTextField:@"Enter City Name"];
+//    UITextField *areaIDTextField = [alert addTextField:@"Enter area ID"];
+//    UITextField *areaNameTextField = [alert addTextField:@"Enter area Name"];
+//
+//    
+//    [alert addButton:@"Save" validationBlock:(^BOOL{
+//        
+//        if ([textField.text isEqualToString:@""]) {
+//            CAKeyframeAnimation * anim = [ CAKeyframeAnimation animationWithKeyPath:@"transform" ] ;
+//            anim.values = @[
+//                            [ NSValue valueWithCATransform3D:CATransform3DMakeTranslation(-7.0f, 0.0f, 0.0f) ],
+//                            [ NSValue valueWithCATransform3D:CATransform3DMakeTranslation( 7.0f, 0.0f, 0.0f) ]
+//                            ] ;
+//            anim.autoreverses = YES ;
+//            anim.repeatCount = 3.0f ;
+//            anim.duration = 0.07f ;
+//            
+//            [ textField.layer addAnimation:anim forKey:nil ] ;
+//            
+//            return false;
+//            
+//        }
+//        
+//            if ([areaIDTextField.text isEqualToString:@""]) {
+//            CAKeyframeAnimation * anim = [ CAKeyframeAnimation animationWithKeyPath:@"transform" ] ;
+//            anim.values = @[
+//                            [ NSValue valueWithCATransform3D:CATransform3DMakeTranslation(-7.0f, 0.0f, 0.0f) ],
+//                            [ NSValue valueWithCATransform3D:CATransform3DMakeTranslation( 7.0f, 0.0f, 0.0f) ]
+//                            ] ;
+//            anim.autoreverses = YES ;
+//            anim.repeatCount = 3.0f ;
+//            anim.duration = 0.07f ;
+//            
+//            [ areaIDTextField.layer addAnimation:anim forKey:nil ] ;
+//            
+//            return false;
+//            
+//        }
+//        if ([areaNameTextField.text isEqualToString:@""]) {
+//            CAKeyframeAnimation * anim = [ CAKeyframeAnimation animationWithKeyPath:@"transform" ] ;
+//            anim.values = @[
+//                            [ NSValue valueWithCATransform3D:CATransform3DMakeTranslation(-7.0f, 0.0f, 0.0f) ],
+//                            [ NSValue valueWithCATransform3D:CATransform3DMakeTranslation( 7.0f, 0.0f, 0.0f) ]
+//                            ] ;
+//            anim.autoreverses = YES ;
+//            anim.repeatCount = 3.0f ;
+//            anim.duration = 0.07f ;
+//            
+//            [ areaNameTextField.layer addAnimation:anim forKey:nil ] ;
+//            
+//            return false;
+//            
+//        }
+//
+//
+//       
+//        return true ;
+//    })
+//    
+//     actionBlock:(^{
+//        
+//            
+//            [self removeBorders];
+//        
+//            lastPoint=CGPointZero;
+//            currentPoint=CGPointZero;
+//            latLang=nil;
+//            self.areaLabel.text=areaNameTextField.text;
+//        
+// //new start
+//        
+//        NSMutableDictionary *areaId1=[[NSMutableDictionary alloc]init];
+//        NSMutableArray *areaId2=[[NSMutableArray alloc]init];
+//        
+//        NSMutableDictionary *areaId=[[NSMutableDictionary alloc]init];
+//        [areaId setObject:areaIDTextField.text forKey:@"areaID"];
+//        [areaId setObject:areaNameTextField.text forKey:@"areaName"];
+//        [areaId setObject:[self.latlongArray valueForKey:@"coordinate1"] forKey:@"polygons"];
+//        [areaId1 setObject:areaId forKey:@"areaInfo"];
+//        [areaId2 addObject:areaId1];
+//        NSDictionary *messageJSON;
+//        BOOL checkCityName=false;
+//        NSUInteger areaCount = 0;
+//        int i;
+//        for (City *c in self.ccAreaList.cityInfo) {
+//            
+//            if ([c.cityName caseInsensitiveCompare:textField.text]==NSOrderedSame) {
+//                 areaCount=c.areaInfo.count;
+//                break;
+//            }
+//            
+//            
+//        }
+//        
+//        
+//        for (i=0; i<self.cityNameArray.count;i++) {
+//            
+//
+//        
+//            if ([[self.cityNameArray objectAtIndex:i]caseInsensitiveCompare:textField.text]==NSOrderedSame) {
+//                
+//                checkCityName=true;
+//                break;
+//            }
+//            else
+//            {
+//                checkCityName=false;
+//            }
+//        }
+//        
+//                
+//        if (checkCityName) {
+//            
+//        
+//                 self.rootRef=[[FIRDatabase database] referenceFromURL:[NSString stringWithFormat:@"%@/countryCitiesListResponse/%@%d%@",@"https://areas-managment.firebaseio.com/",@"cityInfo/",i,@"/areaInfo"]];
+//                
+//               
+//
+//                
+//                 messageJSON = @{
+//                                              @"areaID":areaIDTextField.text,
+//                                              @"areaName":areaNameTextField.text,
+//                                              @"polygons":[self.latlongArray valueForKey:@"coordinate1"]
+//                                              };
+//            
+//
+//                self.rootRef=[self.rootRef child:[NSString stringWithFormat: @"%ld", (long)areaCount]];
+//
+//            
+//            
+//            
+//            }
+//        
+//            else
+//            {
+//                self.rootRef=[[FIRDatabase database] referenceFromURL:[NSString stringWithFormat:@"%@/countryCitiesListResponse/%@",@"https://areas-managment.firebaseio.com/",@"cityInfo"]];
+//                 messageJSON = @{
+//                                              @"areaInfo":[areaId2 valueForKey:@"areaInfo"],
+//                                              @"cityID":[NSString stringWithFormat:@"%lu", self.Citylist.count+1],
+//                                              @"cityName":textField.text
+//                                              };
+//                
+//                self.rootRef=[self.rootRef child:[NSString stringWithFormat:@"%lu", self.Citylist.count]];
+//
+//            }
+//            [self.rootRef setValue:messageJSON withCompletionBlock:^(NSError * _Nullable error, FIRDatabaseReference * _Nonnull ref) {
+//            }];
+//    })];
+//    
+//    [alert addButton:@"Cancel" actionBlock:(^{
+//        self.drawPolygon.map=nil;
+//    })];
+//    
+//    [alert showEdit:self title:@"Add Area" subTitle:nil closeButtonTitle:nil duration:0.0f];
+//    
+//}
+//
+
+
 -(IBAction)saveMap:(id)sender {
     
     [drawImage removeFromSuperview];
+    self.drawPolygon.map = nil;
+    
     self.mapView.userInteractionEnabled=YES;
     GMSMutablePath*pathDynamic = [[GMSMutablePath alloc] init];
     self.latlongArray=[[NSMutableArray alloc]init];
@@ -308,14 +554,14 @@ BOOL mouseSwiped;
         self.latlongDict=[[NSMutableDictionary alloc]init];
         self.coordinateDict=[[NSMutableDictionary alloc]init];
         self.coordinateDict1=[[NSMutableDictionary alloc]init];
-
+        
         [self.latlongDict setValue:latitude forKey:@"lat"];
         [self.latlongDict setValue:longitude forKey:@"lng"];
         
         [self.coordinateDict setValue:self.latlongDict forKey:@"coordinate"];
         [self.coordinateDict1 setValue:self.coordinateDict forKey:@"coordinate1"];
         
-
+        
         
         [self.latlongArray addObject:self.coordinateDict1];
     }
@@ -330,12 +576,13 @@ BOOL mouseSwiped;
     
     SCLAlertView *alert = [[SCLAlertView alloc] init];
     
-    UITextField *textField = [alert addTextField:@"Enter City Name"];
-    UITextField *textField1 = [alert addTextField:@"Enter area Name"];
+    UITextField *areaIDTextField = [alert addTextField:@"Enter area ID"];
+    UITextField *areaNameTextField = [alert addTextField:@"Enter area Name"];
+    
     
     [alert addButton:@"Save" validationBlock:(^BOOL{
         
-        if ([textField.text isEqualToString:@""]) {
+        if ([areaIDTextField.text isEqualToString:@""]) {
             CAKeyframeAnimation * anim = [ CAKeyframeAnimation animationWithKeyPath:@"transform" ] ;
             anim.values = @[
                             [ NSValue valueWithCATransform3D:CATransform3DMakeTranslation(-7.0f, 0.0f, 0.0f) ],
@@ -345,67 +592,185 @@ BOOL mouseSwiped;
             anim.repeatCount = 3.0f ;
             anim.duration = 0.07f ;
             
-            [ textField.layer addAnimation:anim forKey:nil ] ;
+            [ areaIDTextField.layer addAnimation:anim forKey:nil ] ;
+            
+            return false;
+            
+        }
+        if ([areaNameTextField.text isEqualToString:@""]) {
+            CAKeyframeAnimation * anim = [ CAKeyframeAnimation animationWithKeyPath:@"transform" ] ;
+            anim.values = @[
+                            [ NSValue valueWithCATransform3D:CATransform3DMakeTranslation(-7.0f, 0.0f, 0.0f) ],
+                            [ NSValue valueWithCATransform3D:CATransform3DMakeTranslation( 7.0f, 0.0f, 0.0f) ]
+                            ] ;
+            anim.autoreverses = YES ;
+            anim.repeatCount = 3.0f ;
+            anim.duration = 0.07f ;
+            
+            [ areaNameTextField.layer addAnimation:anim forKey:nil ] ;
             
             return false;
             
         }
         
-        if ([textField1.text isEqualToString:@""]) {
-            CAKeyframeAnimation * anim = [ CAKeyframeAnimation animationWithKeyPath:@"transform" ] ;
-            anim.values = @[
-                            [ NSValue valueWithCATransform3D:CATransform3DMakeTranslation(-7.0f, 0.0f, 0.0f) ],
-                            [ NSValue valueWithCATransform3D:CATransform3DMakeTranslation( 7.0f, 0.0f, 0.0f) ]
-                            ] ;
-            anim.autoreverses = YES ;
-            anim.repeatCount = 3.0f ;
-            anim.duration = 0.07f ;
-            
-            [ textField1.layer addAnimation:anim forKey:nil ] ;
-            
-            return false;
-            
-        }
-       
+        
+        
         return true ;
     })
-    
-     actionBlock:(^{
+     
+         actionBlock:(^{
+        
+        
+        [self removeBorders];
+        
+        lastPoint=CGPointZero;
+        currentPoint=CGPointZero;
+        latLang=nil;
+        self.areaLabel.text=areaNameTextField.text;
+        
+        //new start
+        
+        NSMutableDictionary *areaId1=[[NSMutableDictionary alloc]init];
+        NSMutableArray *areaId2=[[NSMutableArray alloc]init];
+        
+        NSMutableDictionary *areaId=[[NSMutableDictionary alloc]init];
+        [areaId setObject:areaIDTextField.text forKey:@"areaID"];
+        [areaId setObject:areaNameTextField.text forKey:@"areaName"];
+        [areaId setObject:[self.latlongArray valueForKey:@"coordinate1"] forKey:@"polygons"];
+        [areaId1 setObject:areaId forKey:@"areaInfo"];
+        [areaId2 addObject:areaId1];
+        NSDictionary *messageJSON;
+        BOOL checkCityName=false;
+        NSUInteger areaCount = 0;
+        int i;
+        
+       
+//        for (City *c in self.ccAreaList.cityInfo) {
+//           
+//            =c.areaInfo
+//            
+//        }
+        
+        NSLog(@"%@",self.cityObj.cityName);
+        for (i=0; i<self.cityNameArray.count;i++) {
+            
+//            if ([[self.cityNameArray objectAtIndex:i]caseInsensitiveCompare:self.nCityName]==NSOrderedSame) {
+//                areaCount=0;
+//                self.rootRef=[[FIRDatabase database] referenceFromURL:[NSString stringWithFormat:@"%@/countryCitiesListResponse/%@%d%@",@"https://areas-managment.firebaseio.com/",@"cityInfo/",i,@"/areaInfo"]];
+//                break ;
+//
+//                
+//            }
+
+        
+           if ([[self.cityNameArray objectAtIndex:i]caseInsensitiveCompare:self.cityObj.cityName]==NSOrderedSame) {
+               
+               areaCount=self.cityObj.areaInfo.count;
+               
+               self.rootRef=[[FIRDatabase database] referenceFromURL:[NSString stringWithFormat:@"%@/countryCitiesListResponse/%@%d%@",@"https://areas-managment.firebaseio.com/",@"cityInfo/",i,@"/areaInfo"]];
+
+               break;
+           }
+        }
         
             
-            [self removeBorders];
+          //  self.rootRef=[[FIRDatabase database] referenceFromURL:[NSString stringWithFormat:@"%@/countryCitiesListResponse/%@%d%@",@"https://areas-managment.firebaseio.com/",@"cityInfo/",i,@"/areaInfo"]];
+            
+            
+            
+            
+            messageJSON = @{
+                            @"areaID":areaIDTextField.text,
+                            @"areaName":areaNameTextField.text,
+                            @"polygons":[self.latlongArray valueForKey:@"coordinate1"]
+                            };
+            
+            
+            self.rootRef=[self.rootRef child:[NSString stringWithFormat: @"%ld", (long)areaCount]];
         
-            lastPoint=CGPointZero;
-            currentPoint=CGPointZero;
-            latLang=nil;
-            self.areaLabel.text=textField1.text;
-            
-            
-            self.rootRef=[[FIRDatabase database] referenceFromURL:[NSString stringWithFormat:@"%@/countryCitiesListResponse/%@",@"https://areas-managment.firebaseio.com/",@"cityInfo"]];
-            
-            NSMutableDictionary *areaId1=[[NSMutableDictionary alloc]init];
-            NSMutableArray *areaId2=[[NSMutableArray alloc]init];
-            
-            NSMutableDictionary *areaId=[[NSMutableDictionary alloc]init];
-            [areaId setObject:@"0" forKey:@"areaID"];
-            [areaId setObject:textField1.text forKey:@"areaName"];
-            [areaId setObject:[self.latlongArray valueForKey:@"coordinate1"] forKey:@"polygons"];
-            [areaId1 setObject:areaId forKey:@"areaInfo"];
-            [areaId2 addObject:areaId1];
         
-            NSDictionary *messageJSON = @{
-                                          @"areaInfo":[areaId2 valueForKey:@"areaInfo"],
-                                          @"cityID":[NSString stringWithFormat:@"%lu", self.Citylist.count+1],
-                                          @"cityName":textField.text
-                                          };
-        
-            self.rootRef=[self.rootRef child:[NSString stringWithFormat:@"%lu", self.Citylist.count]];
-            [self.rootRef setValue:messageJSON withCompletionBlock:^(NSError * _Nullable error, FIRDatabaseReference * _Nonnull ref) {
-            }];
+        [self.rootRef setValue:messageJSON withCompletionBlock:^(NSError * _Nullable error, FIRDatabaseReference * _Nonnull ref) {
+        }];
     })];
     
-    [alert showEdit:self title:@"Add Area" subTitle:nil closeButtonTitle:@"Cancel" duration:0.0f];
+    [alert addButton:@"Cancel" actionBlock:(^{
+        self.drawPolygon.map=nil;
+    })];
     
+//    self.cityObj=nil;
+//    self.nCityName=nil;
+
+    
+    [alert showEdit:self title:@"Add Area" subTitle:nil closeButtonTitle:nil duration:0.0f];
+    
+}
+
+
+
+- (IBAction)addCityandArea:(id)sender {
+    
+    SCLAlertView *alert = [[SCLAlertView alloc] init];
+    
+    UITextField *cityIDTextField = [alert addTextField:@"Enter City ID"];
+    UITextField *cityNameTextField = [alert addTextField:@"Enter City Name"];
+    
+    NSLog(@"%lu",(unsigned long)self.Citylist.count);
+    
+       [self.latlongDict setValue:nil forKey:@"lat"];
+    [self.latlongDict setValue:nil forKey:@"lng"];
+    
+    [self.coordinateDict setValue:self.latlongDict forKey:@"coordinate"];
+    [self.coordinateDict1 setValue:self.coordinateDict forKey:@"coordinate1"];
+    [self.latlongArray addObject:self.coordinateDict1];
+    
+    
+    NSMutableDictionary *areaId1=[[NSMutableDictionary alloc]init];
+            NSMutableArray *areaId2=[[NSMutableArray alloc]init];
+    
+            NSMutableDictionary *areaId=[[NSMutableDictionary alloc]init];
+            [areaId setValue:nil forKey:@"areaID"];
+            [areaId setValue:nil forKey:@"areaName"];
+            [areaId setValue:[self.latlongArray valueForKey:@"coordinate1"] forKey:@"polygons"];
+            [areaId1 setValue:areaId forKey:@"areaInfo"];
+            [areaId2 addObject:areaId1];
+
+    
+
+
+    
+    [alert addButton:@"Save" actionBlock:(^{
+        
+        NSDictionary *messageJSON1;
+        self.rootRef=[[FIRDatabase database] referenceFromURL:[NSString stringWithFormat:@"%@/countryCitiesListResponse/%@",@"https://areas-managment.firebaseio.com/",@"cityInfo"]];
+                         messageJSON1 = @{
+                                                      @"areaInfo":[areaId2 valueForKey:@"areaInfo"],
+                                                      @"cityID":cityIDTextField.text,
+                                                      @"cityName":cityNameTextField.text
+                                                      };
+        
+                        self.rootRef=[self.rootRef child:[NSString stringWithFormat:@"%lu", self.Citylist.count]];
+        [self.rootRef setValue:messageJSON1 withCompletionBlock:^(NSError * _Nullable error, FIRDatabaseReference * _Nonnull ref) {
+        }];
+
+
+        
+    })];
+        
+        
+        
+        [alert addButton:@"Cancel" actionBlock:(^{
+            self.drawPolygon.map=nil;
+        })];
+    [alert showEdit:self title:@"Add City" subTitle:nil closeButtonTitle:nil duration:0.0f];
+
+    
+}
+- (IBAction)updateArea:(id)sender {
+}
+
+-(void)viewDidDisappear:(BOOL)animated
+{
+    self.cityObj=nil;
 }
 
 @end

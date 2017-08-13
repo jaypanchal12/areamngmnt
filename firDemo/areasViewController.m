@@ -10,6 +10,10 @@
 #import "filterHeaderView.h"
 #import "countryCitiesAreaList.h"
 #import "filterDelegates.h"
+#import "SCLAlertView.h"
+@import Firebase;
+
+
 
 #define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
 #define iosMinumumSearchbarBG @"9"
@@ -17,9 +21,17 @@
 
 
 
+
 @interface areasViewController () <UITableViewDelegate,UISearchBarDelegate>
 
 @property (strong, nonatomic) IBOutlet UISearchBar *areaSearchBar;
+@property (nonatomic, strong) CountryCitiesListResponse *ccAreaList;
+@property (strong, nonatomic)FIRDatabaseReference *rootRef;
+@property (nonatomic, strong) NSMutableArray *latlongArray;
+@property (nonatomic, strong) NSMutableDictionary *latlongDict;
+@property (nonatomic, strong) NSMutableDictionary *coordinateDict;
+@property (nonatomic, strong) NSMutableDictionary *coordinateDict1;
+
 
 
 
@@ -31,6 +43,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
     
     self.areaSearchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 160, 44)];
     self.areaSearchBar.placeholder=@"Search Area";
@@ -63,11 +77,15 @@
     NSMutableArray*sections=[[NSMutableArray alloc]init];
     
     for (int x=0; x<self.list.count;x++ ) {
+        
+        
         SSSection *sec=[SSSection sectionWithItems:((City*)self.list[x]).areaInfo header:((City*)self.list[x]).cityName  footer:nil identifier:@"asas"];
         [self.areasTableView registerClass:filterHeaderView.class
      forHeaderFooterViewReuseIdentifier:@"dd"];
         sec.headerHeight=100;
         [sections addObject:sec];
+        
+        
 
     }
     self.elementDataSource = [[SSSectionedDataSource alloc] initWithSections:sections];
@@ -101,6 +119,7 @@
                                                   Area *elementObject,
                                                   UITableView *tableView,
                                                   NSIndexPath *indexPath) {
+        
         cell.textLabel.text=[elementObject.areaName capitalizedString];
         cell.textLabel.textColor=[UIColor grayColor];
         cell.textLabel.textAlignment=NSTextAlignmentCenter;
@@ -116,6 +135,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [self enableCancelButton];
+  //  [self.elementDataSource reloadData];
 }
 
 
@@ -147,12 +167,18 @@
     if( !header )
         header = (filterHeaderView*)[[NSBundle mainBundle] loadNibNamed:@"View" owner:self options:nil][0];
     header.headerLabel.text = requiredSec.header;
-    //header.headerLabel.backgroundColor=[UIColor lightGrayColor];
+    
+    
+    [header.addCityBtn addTarget:self action:@selector(popButtonClicked:event:) forControlEvents:UIControlEventTouchUpInside];
+//    [header.addCityBtn addTarget:self action:@selector(pushButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+
     header.textLabel.text=@"";
     header.detailTextLabel.text=@"";
     header.tintColor=[UIColor redColor];
+    header.addCityBtn.tag=section;
     return header;
 }
+
 
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
@@ -165,9 +191,8 @@
         filter=((Area*)requiredSec.items[indexPath.row]).areaName;
         poly=((Area*)requiredSec.items[indexPath.row]).polygons;
 
-        City*city=(City*)self.list;
-  //  [obj applyFilter:filter andID:city.cityName andPolygon:poly andObject:requiredSec.items[indexPath.row]];
-    [obj applyFilter:filter andID:city andPolygon:poly andObject:requiredSec.items[indexPath.row]];
+        City*city=(City*)self.list[indexPath.section];
+    [obj applyFilter:filter andID:city.cityName andPolygon:poly andObject:requiredSec.items[indexPath.row]];
 
     
     [self dismiss:nil];
@@ -194,9 +219,9 @@
 
 
 -(void)viewWillDisappear:(BOOL)animated{
-    if(self.list.count==0)
+   // if(self.list.count==0)
       //  [JNOLoader dismiss];
-    [self dismiss:nil];
+   // [self dismiss:nil];
 }
 
 
@@ -281,4 +306,81 @@
 }
 */
 
+-(void)popButtonClicked:(id)sender event:(id)event{
+    filterDelegates*obj=[filterDelegates sharedInstance];
+    City*city=(City*)self.list[((UIButton*)sender).tag];
+    [obj applyFilterCityName:city];
+    
+    
+    [self dismiss:nil];
+    
+}
+
+
+- (IBAction)addCity:(id)sender
+{
+
+SCLAlertView *alert = [[SCLAlertView alloc] init];
+
+UITextField *cityIDTextField = [alert addTextField:@"Enter City ID"];
+UITextField *cityNameTextField = [alert addTextField:@"Enter City Name"];
+
+
+[self.latlongDict setValue:nil forKey:@"lat"];
+[self.latlongDict setValue:nil forKey:@"lng"];
+
+[self.coordinateDict setValue:self.latlongDict forKey:@"coordinate"];
+[self.coordinateDict1 setValue:self.coordinateDict forKey:@"coordinate1"];
+[self.latlongArray addObject:self.coordinateDict1];
+
+
+NSMutableDictionary *areaId1=[[NSMutableDictionary alloc]init];
+NSMutableArray *areaId2=[[NSMutableArray alloc]init];
+
+NSMutableDictionary *areaId=[[NSMutableDictionary alloc]init];
+[areaId setValue:nil forKey:@"areaID"];
+[areaId setValue:nil forKey:@"areaName"];
+[areaId setValue:[self.latlongArray valueForKey:@"coordinate1"] forKey:@"polygons"];
+[areaId1 setValue:areaId forKey:@"areaInfo"];
+[areaId2 addObject:areaId1];
+
+
+
+
+
+[alert addButton:@"Save" actionBlock:(^{
+    filterDelegates*obj=[filterDelegates sharedInstance];
+
+    NSDictionary *messageJSON1;
+    self.rootRef=[[FIRDatabase database] referenceFromURL:[NSString stringWithFormat:@"%@/countryCitiesListResponse/%@",@"https://areas-managment.firebaseio.com/",@"cityInfo"]];
+    messageJSON1 = @{
+                     @"areaInfo":[areaId2 valueForKey:@"areaInfo"],
+                     @"cityID":cityIDTextField.text,
+                     @"cityName":cityNameTextField.text
+                     };
+    
+    self.rootRef=[self.rootRef child:[NSString stringWithFormat:@"%lu", self.list.count]];
+    [self.rootRef setValue:messageJSON1 withCompletionBlock:^(NSError * _Nullable error, FIRDatabaseReference * _Nonnull ref) {
+        
+    }];
+    
+    City*city= [[City alloc]init];
+    city.cityName=cityNameTextField.text;
+    city.cityID=cityIDTextField.text;
+    
+    [obj applyFilterCityName:city];
+
+    
+
+    [self dismiss:nil];
+
+})];
+
+
+
+[alert addButton:@"Cancel" actionBlock:(^{
+})];
+[alert showEdit:self title:@"Add City" subTitle:nil closeButtonTitle:nil duration:0.0f];
+
+}
 @end

@@ -17,6 +17,7 @@
 
 @property (nonatomic, strong) NSMutableArray *list;
 @property (nonatomic, strong) NSArray *filteredList;
+- (IBAction)addCity:(id)sender;
 
 
 @end

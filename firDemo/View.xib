@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hRM-An-bzS">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hRM-An-bzS" userLabel="outer View">
                     <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
@@ -24,18 +24,27 @@
                     <color key="backgroundColor" red="0.396078431372549" green="0.1764705882352941" blue="0.56470588235294117" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bCO-Sx-Kak">
-                    <rect key="frame" x="0.0" y="0.5" width="300" height="300"/>
+                    <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
                     <color key="textColor" red="0.39478373529999999" green="0.17510411140000001" blue="0.63529411764705879" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2LH-dQ-iRP">
+                    <rect key="frame" x="194" y="0.0" width="106" height="300"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="106" id="A8o-mF-h1m"/>
+                    </constraints>
+                    <state key="normal" title="Add"/>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="1Eq-xR-sTf" firstAttribute="centerX" secondItem="H3j-gn-JXe" secondAttribute="centerX" id="1tq-j3-LMI"/>
+                <constraint firstAttribute="trailing" secondItem="2LH-dQ-iRP" secondAttribute="trailing" id="7Uo-dc-bYI"/>
                 <constraint firstAttribute="bottom" secondItem="hRM-An-bzS" secondAttribute="bottom" id="801-MH-0we"/>
                 <constraint firstItem="bCO-Sx-Kak" firstAttribute="centerX" secondItem="H3j-gn-JXe" secondAttribute="centerX" id="9qx-XE-TYL"/>
                 <constraint firstItem="1Eq-xR-sTf" firstAttribute="height" secondItem="hRM-An-bzS" secondAttribute="height" id="CMX-Gq-SpB"/>
+                <constraint firstItem="2LH-dQ-iRP" firstAttribute="top" secondItem="H3j-gn-JXe" secondAttribute="top" id="DpB-Qm-D7U"/>
                 <constraint firstItem="hRM-An-bzS" firstAttribute="leading" secondItem="H3j-gn-JXe" secondAttribute="leading" id="EL3-OT-j5d"/>
                 <constraint firstItem="bCO-Sx-Kak" firstAttribute="centerY" secondItem="H3j-gn-JXe" secondAttribute="centerY" id="Lh9-BK-E2y"/>
                 <constraint firstItem="1Eq-xR-sTf" firstAttribute="centerY" secondItem="H3j-gn-JXe" secondAttribute="centerY" id="ROF-LO-Rs9"/>
@@ -44,9 +53,12 @@
                 <constraint firstItem="bCO-Sx-Kak" firstAttribute="height" secondItem="1Eq-xR-sTf" secondAttribute="height" id="hhb-Sk-6tn"/>
                 <constraint firstItem="bCO-Sx-Kak" firstAttribute="width" secondItem="1Eq-xR-sTf" secondAttribute="width" id="kw6-GK-OrN"/>
                 <constraint firstItem="hRM-An-bzS" firstAttribute="top" secondItem="H3j-gn-JXe" secondAttribute="top" id="qPN-yR-oOw"/>
+                <constraint firstItem="2LH-dQ-iRP" firstAttribute="height" secondItem="1Eq-xR-sTf" secondAttribute="height" id="u7b-ef-8rx"/>
+                <constraint firstAttribute="bottom" secondItem="2LH-dQ-iRP" secondAttribute="bottom" id="voM-OC-RxC"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="addCityBtn" destination="2LH-dQ-iRP" id="iQ5-3W-qUm"/>
                 <outlet property="headerLabel" destination="bCO-Sx-Kak" id="Npf-0a-5lI"/>
             </connections>
             <point key="canvasLocation" x="102" y="40"/>

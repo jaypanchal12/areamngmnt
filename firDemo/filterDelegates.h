@@ -10,7 +10,9 @@
 #import "countryCitiesAreaList.h"
 
 @protocol JNOFilter <NSObject>
--(void)didApplyFilter:(NSString*)filterVal andID:(City*)ID andPolygon:(NSArray*)polygon andObject:(id)object;
+-(void)didApplyFilter:(NSString*)filterVal andID:(NSString*)ID andPolygon:(NSArray*)polygon andObject:(id)object;
+-(void)didApplyFilterCityName:(City*)cityObject;
+
 
 @end
 
@@ -18,7 +20,10 @@
 
 @interface filterDelegates : NSObject
 @property (nonatomic, retain) id <JNOFilter> delegate;
--(void)applyFilter:(NSString*)filterVal andID:(City*)ID andPolygon:(NSArray *)polygon andObject:(id)object;
+-(void)applyFilter:(NSString*)filterVal andID:(NSString*)ID andPolygon:(NSArray *)polygon andObject:(id)object;
+-(void)applyFilterCityName:(City*)cityObject  ;
+
+
 + (instancetype)sharedInstance;
 
 
