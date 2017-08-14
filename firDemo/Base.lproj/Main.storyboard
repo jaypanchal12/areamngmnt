@@ -27,7 +27,7 @@
                                     <constraint firstAttribute="height" constant="60" id="Bsj-sE-iwK"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select the area" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3hm-Vv-7QP">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3hm-Vv-7QP">
                                 <rect key="frame" x="9" y="0.0" width="350" height="60"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
@@ -47,33 +47,25 @@
                                 <rect key="frame" x="0.0" y="61" width="375" height="55"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UXi-7Z-cDD">
-                                        <rect key="frame" x="8" y="0.0" width="102" height="55"/>
+                                        <rect key="frame" x="68" y="0.0" width="102" height="55"/>
                                         <state key="normal" title="Draw new area"/>
                                         <connections>
                                             <action selector="drawMap:" destination="MYX-Lo-hnT" eventType="touchUpInside" id="W5B-fl-gwD"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8vD-3v-65p">
-                                        <rect key="frame" x="227" y="0.0" width="69" height="55"/>
+                                        <rect key="frame" x="220" y="0.0" width="69" height="55"/>
                                         <state key="normal" title="Save Area"/>
                                         <connections>
                                             <action selector="saveMap:" destination="MYX-Lo-hnT" eventType="touchUpInside" id="nx5-xk-QxA"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EUw-LW-abq">
-                                        <rect key="frame" x="151" y="12" width="46" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Update"/>
-                                        <connections>
-                                            <action selector="updateArea:" destination="MYX-Lo-hnT" eventType="touchUpInside" id="X29-Oc-UZQ"/>
                                         </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="8vD-3v-65p" secondAttribute="bottom" id="23S-Tb-wj2"/>
-                                    <constraint firstAttribute="trailing" secondItem="8vD-3v-65p" secondAttribute="trailing" constant="79" id="8Jm-nz-n2v"/>
-                                    <constraint firstItem="UXi-7Z-cDD" firstAttribute="leading" secondItem="xyO-q0-Vo6" secondAttribute="leading" constant="8" id="bye-1G-4AO"/>
+                                    <constraint firstAttribute="trailing" secondItem="8vD-3v-65p" secondAttribute="trailing" constant="86" id="8Jm-nz-n2v"/>
+                                    <constraint firstItem="UXi-7Z-cDD" firstAttribute="leading" secondItem="xyO-q0-Vo6" secondAttribute="leading" constant="68" id="bye-1G-4AO"/>
                                     <constraint firstAttribute="bottom" secondItem="UXi-7Z-cDD" secondAttribute="bottom" id="dtT-EP-HLm"/>
                                     <constraint firstItem="8vD-3v-65p" firstAttribute="top" secondItem="xyO-q0-Vo6" secondAttribute="top" id="h0X-ro-HyV"/>
                                     <constraint firstItem="UXi-7Z-cDD" firstAttribute="top" secondItem="xyO-q0-Vo6" secondAttribute="top" id="p80-RB-Hcw"/>
@@ -112,7 +104,6 @@
                         <outlet property="drawMapBtn_Outlet" destination="UXi-7Z-cDD" id="eug-NE-PcB"/>
                         <outlet property="mapView" destination="u7P-Nh-2uK" id="RoL-aO-kdf"/>
                         <outlet property="saveAreaBtn_Outlet" destination="8vD-3v-65p" id="6sk-Bt-1xq"/>
-                        <outlet property="updateBtn_outlet" destination="EUw-LW-abq" id="LEp-At-mUt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m7j-CQ-l0m" userLabel="First Responder" sceneMemberID="firstResponder"/>

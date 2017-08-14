@@ -43,7 +43,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.filteredList=self.list;
+
     
     
     self.areaSearchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 160, 44)];
@@ -135,7 +136,6 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [self enableCancelButton];
-  //  [self.elementDataSource reloadData];
 }
 
 
@@ -170,7 +170,6 @@
     
     
     [header.addCityBtn addTarget:self action:@selector(popButtonClicked:event:) forControlEvents:UIControlEventTouchUpInside];
-//    [header.addCityBtn addTarget:self action:@selector(pushButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
 
     header.textLabel.text=@"";
     header.detailTextLabel.text=@"";
@@ -183,6 +182,8 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
     SSSection*requiredSec=(SSSection*)self.elementDataSource.sections[(NSUInteger)indexPath.section];
+    
+    NSLog(@"%ld",(long)indexPath.section);
     NSString*filter=@"";
     NSArray *poly=[[NSArray alloc]init];
     
@@ -191,7 +192,8 @@
         filter=((Area*)requiredSec.items[indexPath.row]).areaName;
         poly=((Area*)requiredSec.items[indexPath.row]).polygons;
 
-        City*city=(City*)self.list[indexPath.section];
+        City*city=(City*)self.filteredList[indexPath.section];
+
     [obj applyFilter:filter andID:city.cityName andPolygon:poly andObject:requiredSec.items[indexPath.row]];
 
     
@@ -242,17 +244,22 @@
     NSArray *filteredArray=[self filterTags:searchText];
     NSMutableArray*sections=[[NSMutableArray alloc]init];
     [self.elementDataSource removeAllSections];
+    self.filteredList=[[NSMutableArray alloc]init];
+
     for (int x=0; x<filteredArray.count;x++ ) {
         SSSection *sec=[SSSection sectionWithItems:((City*)filteredArray[x]).areaInfo header:((City*)filteredArray[x]).cityName  footer:nil identifier:@"asas"];
+        
+        [self.filteredList addObject:[filteredArray objectAtIndex:x]];
+
+        
         [self.areasTableView registerClass:filterHeaderView.class
      forHeaderFooterViewReuseIdentifier:@"dd"];
         sec.headerHeight=100;
         [sections addObject:sec];
         [self.elementDataSource appendSection:sec];
     }
-    // self.elementDataSource = [[SSSectionedDataSource alloc] initWithSections:sections];
-    
-}
+
+   }
 
 
 -(NSArray*)filterTags:(NSString*)key{
@@ -261,10 +268,11 @@
     NSMutableArray*cities=[NSMutableArray new];
     for (int x=0;x<self.list.count;x++) {
         City*city = [self.list[x] copy];
-      //  NSPredicate *predicate =    [NSPredicate predicateByType:JNOPredicateContains fieldKey:@"areaName" text:key];
         
         NSPredicate *predicate =  [NSPredicate predicateWithFormat:@"%K contains[c] %@", @"areaName", key];
-
+        
+        
+        
         NSArray *filtered = [city.areaInfo filteredArrayUsingPredicate:predicate];
         if (filtered.count>0) {
             city.areaInfo=filtered;
@@ -294,21 +302,9 @@
 }
 
 
-
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 -(void)popButtonClicked:(id)sender event:(id)event{
     filterDelegates*obj=[filterDelegates sharedInstance];
-    City*city=(City*)self.list[((UIButton*)sender).tag];
+    City*city=(City*)self.filteredList[((UIButton*)sender).tag];
     [obj applyFilterCityName:city];
     
     
