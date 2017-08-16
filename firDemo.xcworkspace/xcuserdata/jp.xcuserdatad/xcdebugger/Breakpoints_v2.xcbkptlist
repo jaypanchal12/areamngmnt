@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "firDemo/showMapViewController.m"
-            timestampString = "524311782.935263"
+            timestampString = "524393139.530997"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "165"
-            endingLineNumber = "165"
+            startingLineNumber = "138"
+            endingLineNumber = "138"
             landmarkName = "-getCityName"
             landmarkType = "7">
          </BreakpointContent>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "firDemo/showMapViewController.m"
-            timestampString = "524306961.816656"
+            timestampString = "524393139.530997"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
             landmarkName = "-didApplyFilter:andID:andPolygon:andObject:"
             landmarkType = "7">
          </BreakpointContent>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "firDemo/showMapViewController.m"
-            timestampString = "524311782.935263"
+            timestampString = "524393139.530997"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "194"
-            endingLineNumber = "194"
+            startingLineNumber = "167"
+            endingLineNumber = "167"
             landmarkName = "-fetchAreaFromFirbase"
             landmarkType = "7">
          </BreakpointContent>
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "firDemo/showMapViewController.m"
-            timestampString = "524311782.935263"
+            timestampString = "524393139.530997"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "227"
-            endingLineNumber = "227"
+            startingLineNumber = "200"
+            endingLineNumber = "200"
             landmarkName = "-selectArea:"
             landmarkType = "7">
          </BreakpointContent>
@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "firDemo/showMapViewController.m"
-            timestampString = "524314274.927447"
+            timestampString = "524393139.530997"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "248"
-            endingLineNumber = "248"
+            startingLineNumber = "221"
+            endingLineNumber = "221"
             landmarkName = "-removeBorders"
             landmarkType = "7">
          </BreakpointContent>
@@ -106,11 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "firDemo/showMapViewController.m"
-            timestampString = "524314274.927447"
+            timestampString = "524393139.530997"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "256"
-            endingLineNumber = "256"
+            startingLineNumber = "227"
+            endingLineNumber = "227"
             landmarkName = "-drawAreaBorders"
             landmarkType = "7">
          </BreakpointContent>
@@ -122,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "firDemo/showMapViewController.m"
-            timestampString = "524314274.927447"
+            timestampString = "524393139.530997"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "283"
-            endingLineNumber = "283"
+            startingLineNumber = "254"
+            endingLineNumber = "254"
             landmarkName = "-drawMap:"
             landmarkType = "7">
          </BreakpointContent>
@@ -138,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "firDemo/showMapViewController.m"
-            timestampString = "524314274.927447"
+            timestampString = "524393139.530997"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "310"
-            endingLineNumber = "310"
+            startingLineNumber = "281"
+            endingLineNumber = "281"
             landmarkName = "-touchesMoved:withEvent:"
             landmarkType = "7">
          </BreakpointContent>
@@ -154,11 +154,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "firDemo/showMapViewController.m"
-            timestampString = "524314274.927447"
+            timestampString = "524393139.530997"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "264"
-            endingLineNumber = "264"
+            startingLineNumber = "235"
+            endingLineNumber = "235"
             landmarkName = "-drawAreaBorders"
             landmarkType = "7">
          </BreakpointContent>
@@ -170,11 +170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "firDemo/showMapViewController.m"
-            timestampString = "524311782.935263"
+            timestampString = "524393139.530997"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "173"
-            endingLineNumber = "173"
+            startingLineNumber = "146"
+            endingLineNumber = "146"
             landmarkName = "-getCityName"
             landmarkType = "7">
          </BreakpointContent>
@@ -186,11 +186,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "firDemo/areasViewController.m"
-            timestampString = "524318532.49312"
+            timestampString = "524393139.530997"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "185"
-            endingLineNumber = "185"
+            startingLineNumber = "183"
+            endingLineNumber = "183"
             landmarkName = "-tableView:didSelectRowAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
@@ -218,11 +218,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "firDemo/showMapViewController.m"
-            timestampString = "524311782.935263"
+            timestampString = "524393139.530997"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
             landmarkName = "-didApplyFilter:andID:andPolygon:andObject:"
             landmarkType = "7">
          </BreakpointContent>
@@ -234,11 +234,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "firDemo/showMapViewController.m"
-            timestampString = "524311782.935263"
+            timestampString = "524393139.530997"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "209"
-            endingLineNumber = "209"
+            startingLineNumber = "182"
+            endingLineNumber = "182"
             landmarkName = "-fetchAreaFromFirbase"
             landmarkType = "7">
          </BreakpointContent>
@@ -250,11 +250,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "firDemo/showMapViewController.m"
-            timestampString = "524314274.927447"
+            timestampString = "524393139.530997"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "250"
-            endingLineNumber = "250"
+            startingLineNumber = "223"
+            endingLineNumber = "223"
             landmarkName = "-removeBorders"
             landmarkType = "7">
          </BreakpointContent>
@@ -266,11 +266,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "firDemo/showMapViewController.m"
-            timestampString = "524311782.935263"
+            timestampString = "524393139.530997"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "172"
-            endingLineNumber = "172"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
             landmarkName = "-getCityName"
             landmarkType = "7">
          </BreakpointContent>
@@ -282,11 +282,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "firDemo/showMapViewController.m"
-            timestampString = "524311782.935263"
+            timestampString = "524393139.530997"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "202"
-            endingLineNumber = "202"
+            startingLineNumber = "175"
+            endingLineNumber = "175"
             landmarkName = "-fetchAreaFromFirbase"
             landmarkType = "7">
          </BreakpointContent>
@@ -298,11 +298,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "firDemo/showMapViewController.m"
-            timestampString = "524311782.935263"
+            timestampString = "524393139.530997"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "219"
-            endingLineNumber = "219"
+            startingLineNumber = "192"
+            endingLineNumber = "192"
             landmarkName = "-fetchAreaFromFirbase"
             landmarkType = "7">
          </BreakpointContent>
@@ -314,11 +314,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "firDemo/showMapViewController.m"
-            timestampString = "524311420.886949"
+            timestampString = "524393139.530997"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "129"
-            endingLineNumber = "129"
+            startingLineNumber = "124"
+            endingLineNumber = "124"
             landmarkName = "-didApplyFilterCityName:"
             landmarkType = "7">
          </BreakpointContent>
@@ -330,11 +330,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "firDemo/showMapViewController.m"
-            timestampString = "524314274.927447"
+            timestampString = "524393139.530997"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "553"
-            endingLineNumber = "553"
+            startingLineNumber = "326"
+            endingLineNumber = "326"
             landmarkName = "-saveMap:"
             landmarkType = "7">
          </BreakpointContent>
@@ -346,11 +346,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "firDemo/showMapViewController.m"
-            timestampString = "524314274.927447"
+            timestampString = "524393139.530997"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "600"
-            endingLineNumber = "600"
+            startingLineNumber = "373"
+            endingLineNumber = "373"
             landmarkName = "-saveMap:"
             landmarkType = "7">
          </BreakpointContent>
@@ -362,11 +362,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "firDemo/showMapViewController.m"
-            timestampString = "524314274.927447"
+            timestampString = "524393139.530997"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "639"
-            endingLineNumber = "639"
+            startingLineNumber = "412"
+            endingLineNumber = "412"
             landmarkName = "-saveMap:"
             landmarkType = "7">
          </BreakpointContent>
@@ -394,11 +394,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "firDemo/areasViewController.m"
-            timestampString = "524384692.015661"
+            timestampString = "524393139.530997"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "330"
-            endingLineNumber = "330"
+            startingLineNumber = "305"
+            endingLineNumber = "305"
             landmarkName = "-popButtonClicked:event:"
             landmarkType = "7">
          </BreakpointContent>
@@ -442,11 +442,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "firDemo/areasViewController.m"
-            timestampString = "524318532.49312"
+            timestampString = "524393139.530997"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "165"
-            endingLineNumber = "165"
+            startingLineNumber = "164"
+            endingLineNumber = "164"
             landmarkName = "-tableView:viewForHeaderInSection:"
             landmarkType = "7">
          </BreakpointContent>
@@ -474,11 +474,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "firDemo/showMapViewController.m"
-            timestampString = "524314274.927447"
+            timestampString = "524393139.530997"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "660"
-            endingLineNumber = "660"
+            startingLineNumber = "432"
+            endingLineNumber = "432"
             landmarkName = "-saveMap:"
             landmarkType = "7">
          </BreakpointContent>
@@ -490,11 +490,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "firDemo/areasViewController.m"
-            timestampString = "524384692.015661"
+            timestampString = "524393139.530997"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "341"
-            endingLineNumber = "341"
+            startingLineNumber = "316"
+            endingLineNumber = "316"
             landmarkName = "-addCity:"
             landmarkType = "7">
          </BreakpointContent>
@@ -538,11 +538,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "firDemo/showMapViewController.m"
-            timestampString = "524314274.927447"
+            timestampString = "524393139.530997"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "666"
-            endingLineNumber = "666"
+            startingLineNumber = "438"
+            endingLineNumber = "438"
             landmarkName = "-saveMap:"
             landmarkType = "7">
          </BreakpointContent>
@@ -554,11 +554,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "firDemo/showMapViewController.m"
-            timestampString = "524314274.927447"
+            timestampString = "524393139.530997"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "674"
-            endingLineNumber = "674"
+            startingLineNumber = "446"
+            endingLineNumber = "446"
             landmarkName = "-saveMap:"
             landmarkType = "7">
          </BreakpointContent>
@@ -570,11 +570,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "firDemo/showMapViewController.m"
-            timestampString = "524314274.927447"
+            timestampString = "524393139.530997"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "855"
-            endingLineNumber = "855"
+            startingLineNumber = "548"
+            endingLineNumber = "548"
             landmarkName = "-viewDidDisappear:"
             landmarkType = "7">
          </BreakpointContent>
@@ -586,11 +586,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "firDemo/areasViewController.m"
-            timestampString = "524384692.015661"
+            timestampString = "524561003.443704"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "392"
-            endingLineNumber = "392"
+            startingLineNumber = "403"
+            endingLineNumber = "403"
             landmarkName = "-addCity:"
             landmarkType = "7">
          </BreakpointContent>
@@ -602,11 +602,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "firDemo/showMapViewController.m"
-            timestampString = "524314274.927447"
+            timestampString = "524393139.530997"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "839"
-            endingLineNumber = "839"
+            startingLineNumber = "532"
+            endingLineNumber = "532"
             landmarkName = "-updateArea:"
             landmarkType = "7">
          </BreakpointContent>
@@ -618,11 +618,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "firDemo/showMapViewController.m"
-            timestampString = "524314274.927447"
+            timestampString = "524393139.530997"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "281"
-            endingLineNumber = "281"
+            startingLineNumber = "252"
+            endingLineNumber = "252"
             landmarkName = "-drawMap:"
             landmarkType = "7">
          </BreakpointContent>
@@ -634,11 +634,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "firDemo/showMapViewController.m"
-            timestampString = "524314274.927447"
+            timestampString = "524393139.530997"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "588"
-            endingLineNumber = "588"
+            startingLineNumber = "361"
+            endingLineNumber = "361"
             landmarkName = "-saveMap:"
             landmarkType = "7">
          </BreakpointContent>
@@ -650,11 +650,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "firDemo/showMapViewController.m"
-            timestampString = "524314274.927447"
+            timestampString = "524393139.530997"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "717"
-            endingLineNumber = "717"
+            startingLineNumber = "489"
+            endingLineNumber = "489"
             landmarkName = "-saveMap:"
             landmarkType = "7">
             <Locations>
@@ -666,11 +666,11 @@
                   moduleName = "firDemo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jp/Desktop/AreasManagment/areamngmnt/firDemo/showMapViewController.m"
-                  timestampString = "524385003.212784"
+                  timestampString = "524558142.609763"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "717"
-                  endingLineNumber = "717"
+                  startingLineNumber = "489"
+                  endingLineNumber = "489"
                   offsetFromSymbolStart = "495">
                </Location>
                <Location
@@ -681,11 +681,11 @@
                   moduleName = "firDemo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jp/Desktop/AreasManagment/areamngmnt/firDemo/showMapViewController.m"
-                  timestampString = "524385003.214924"
+                  timestampString = "524558142.612658"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "717"
-                  endingLineNumber = "717"
+                  startingLineNumber = "489"
+                  endingLineNumber = "489"
                   offsetFromSymbolStart = "503">
                </Location>
             </Locations>
@@ -698,11 +698,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "firDemo/showMapViewController.m"
-            timestampString = "524314274.927447"
+            timestampString = "524393139.530997"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "707"
-            endingLineNumber = "707"
+            startingLineNumber = "479"
+            endingLineNumber = "479"
             landmarkName = "-saveMap:"
             landmarkType = "7">
          </BreakpointContent>
@@ -714,11 +714,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "firDemo/areasViewController.m"
-            timestampString = "524382370.366133"
+            timestampString = "524393139.530997"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "251"
-            endingLineNumber = "251"
+            startingLineNumber = "243"
+            endingLineNumber = "243"
             landmarkName = "-searchBar:textDidChange:"
             landmarkType = "7">
          </BreakpointContent>
@@ -730,11 +730,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "firDemo/areasViewController.m"
-            timestampString = "524384692.015661"
+            timestampString = "524393139.530997"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "277"
-            endingLineNumber = "277"
+            startingLineNumber = "265"
+            endingLineNumber = "265"
             landmarkName = "-filterTags:"
             landmarkType = "7">
          </BreakpointContent>
@@ -746,11 +746,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "firDemo/areasViewController.m"
-            timestampString = "524384692.015661"
+            timestampString = "524393139.530997"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "293"
-            endingLineNumber = "293"
+            startingLineNumber = "280"
+            endingLineNumber = "280"
             landmarkName = "-filterTags:"
             landmarkType = "7">
          </BreakpointContent>
@@ -762,11 +762,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "firDemo/showMapViewController.m"
-            timestampString = "524319139.071552"
+            timestampString = "524393139.530997"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "193"
-            endingLineNumber = "193"
+            startingLineNumber = "166"
+            endingLineNumber = "166"
             landmarkName = "-fetchAreaFromFirbase"
             landmarkType = "7">
          </BreakpointContent>
@@ -794,11 +794,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "firDemo/areasViewController.m"
-            timestampString = "524384268.028495"
+            timestampString = "524393139.530997"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "179"
-            endingLineNumber = "179"
+            startingLineNumber = "177"
+            endingLineNumber = "177"
             landmarkName = "-tableView:viewForHeaderInSection:"
             landmarkType = "7">
          </BreakpointContent>

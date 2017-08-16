@@ -340,11 +340,47 @@ NSMutableDictionary *areaId=[[NSMutableDictionary alloc]init];
 [areaId1 setValue:areaId forKey:@"areaInfo"];
 [areaId2 addObject:areaId1];
 
+    [alert addButton:@"Save" validationBlock:(^BOOL{
 
 
+    if ([cityIDTextField.text isEqualToString:@""]) {
+        CAKeyframeAnimation * anim = [ CAKeyframeAnimation animationWithKeyPath:@"transform" ] ;
+        anim.values = @[
+                        [ NSValue valueWithCATransform3D:CATransform3DMakeTranslation(-7.0f, 0.0f, 0.0f) ],
+                        [ NSValue valueWithCATransform3D:CATransform3DMakeTranslation( 7.0f, 0.0f, 0.0f) ]
+                        ] ;
+        anim.autoreverses = YES ;
+        anim.repeatCount = 3.0f ;
+        anim.duration = 0.07f ;
+        
+        [ cityIDTextField.layer addAnimation:anim forKey:nil ] ;
+        
+        return false;
+        
+    }
+    if ([cityNameTextField.text isEqualToString:@""]) {
+        CAKeyframeAnimation * anim = [ CAKeyframeAnimation animationWithKeyPath:@"transform" ] ;
+        anim.values = @[
+                        [ NSValue valueWithCATransform3D:CATransform3DMakeTranslation(-7.0f, 0.0f, 0.0f) ],
+                        [ NSValue valueWithCATransform3D:CATransform3DMakeTranslation( 7.0f, 0.0f, 0.0f) ]
+                        ] ;
+        anim.autoreverses = YES ;
+        anim.repeatCount = 3.0f ;
+        anim.duration = 0.07f ;
+        
+        [ cityNameTextField.layer addAnimation:anim forKey:nil ] ;
+        
+        return false;
+        
+    }
+    
+    
+    
+    return true ;
+})
 
 
-[alert addButton:@"Save" actionBlock:(^{
+actionBlock:(^{
     filterDelegates*obj=[filterDelegates sharedInstance];
 
     NSDictionary *messageJSON1;
